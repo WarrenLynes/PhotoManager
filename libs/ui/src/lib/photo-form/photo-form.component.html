@@ -1,0 +1,11 @@
+<form (ngSubmit)="submitPhoto()" [formGroup]="form">
+
+  <mat-form-field class="full-width">
+    <input matInput placeholder="name" formControlName="name" type="text" name="email">
+    <mat-error *ngIf="form.controls['name'].hasError('required')">name is required</mat-error>
+  </mat-form-field>
+
+  <input placeholder="photo" formControlName="photo" (change)="updatePhotoFile($event)" type="file" name="photo">
+
+  <button mat-button type="submit"> create </button>
+</form>

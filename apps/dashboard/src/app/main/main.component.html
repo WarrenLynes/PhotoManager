@@ -1,0 +1,24 @@
+
+
+<div class="container full-width">
+
+  <div class="col- full-width">
+
+    <starter-photo-form
+      [selectedPhoto]="item$ | async"
+      (savePhoto)="submitPhoto($event)"
+    ></starter-photo-form>
+
+  </div>
+
+  <mat-card class="col-" *ngFor="let item of items$ | async" style="width: 400px;">
+    <mat-card-title>{{item.name}}</mat-card-title>
+    <mat-card-content>
+      <img [src]="item.imageUrl" alt="" class="full-width">
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button  (click)="deletePhoto(item.id)">delete</button>
+      <button mat-button (click)="selectPhoto(item.id)">edit</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

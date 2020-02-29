@@ -1,0 +1,13 @@
+img.full-width {
+  max-height: 25vh;
+  max-width: 100%;
+  width: auto;
+}
+
+mat-card {
+  justify-content: space-between!important;
+  width: 400px!important;
+  display: flex!important;
+  flex-direction: column!important;
+  align-items: center!important;
+}
