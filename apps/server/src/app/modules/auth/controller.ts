@@ -7,7 +7,7 @@ import validationMiddleware from '../../middleware/validation.middleware';
 
 export default class AuthenticationController implements Controller {
   public path = '/auth';
-  public router: Router = Router();
+  public router: any = Router();
   private service: AuthenticationService = new AuthenticationService();
 
   constructor() {
@@ -15,7 +15,7 @@ export default class AuthenticationController implements Controller {
     this.router.post(`${this.path}/register`, validationMiddleware(CreateUserDto), this.register);
   }
 
-  private login = async (req: Request, res: Response, next: NextFunction) => {
+  private login = async (req: any, res: any, next: any) => {
     try {
       const loginData: LogInDto = req.body;
       console.log(req.body);
@@ -27,12 +27,12 @@ export default class AuthenticationController implements Controller {
     }
   }
 
-  private logOut = (req: Request, res: Response) => {
+  private logOut = (req: any, res: any) => {
     res.setHeader('Set-Cookie', ['Authorization=;Max-age=0']);
     res.send(200);
   }
 
-  private register = async (req: Request, res: Response, next: NextFunction) => {
+  private register = async (req: any, res: any, next: any) => {
     const userData: CreateUserDto = req.body;
 
     console.log('THE FUCK????');

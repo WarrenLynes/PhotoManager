@@ -27,12 +27,12 @@ export default class PhotoController implements Controller {
     this.router.delete(`${this.path}/:id`, authMiddleware(), this.delete);
   }
 
-  private fetchAll = async (req: any, res: express.Response, next: express.NextFunction) => {
+  private fetchAll = async (req: any, res: any, next: any) => {
     const photos = await this.photo.find({userId: req.user._id});
     res.send(photos);
   };
 
-  private create = async (req: any, res: express.Response, next: express.NextFunction) => {
+  private create = async (req: any, res: any, next: any) => {
 
     console.log(req.file);
     const photoData: CreatePhotoDto = {...req.body, imageUrl: req.file.filename, userId: req.user._id};
@@ -41,13 +41,13 @@ export default class PhotoController implements Controller {
     res.send(photo);
   };
 
-  private delete = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  private delete = async (req: any, res: any, next: any) => {
     const result = await this.photo.findOneAndDelete({_id: req.params.id});
     fs.unlinkSync('uploads/' + result.imageUrl);
     res.send(result);
   };
 
-  private edit = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  private edit = async (req: any, res: any, next: any) => {
     const photoId = req.params.id;
     const photoData: CreatePhotoDto = req.body;
     await this.photo.findOneAndUpdate({ _id: photoId }, photoData);

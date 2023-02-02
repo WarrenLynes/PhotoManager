@@ -12,7 +12,7 @@ const path = require('path');
 const cors = require('cors');
 
 export default class App {
-  public app: express.Application;
+  public app: any;
 
   constructor(controllers: Controller[]) {
     this.app = express();
@@ -30,7 +30,7 @@ export default class App {
 
     this.app.use(express.static(path.join(__dirname, '../../../uploads')));
     this.app.use(express.static(path.join(__dirname, '../../../dist/apps/dashboard')));
-    this.app.use('/*', express.static(path.join(__dirname, '../../../dist/apps/dashboard/index.html')))
+    this.app.use('/*', express.static(path.join(__dirname, '../../../dist/apps/dashboard/index.html')));
   }
 
   public getServer() {

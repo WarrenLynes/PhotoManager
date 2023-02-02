@@ -13,12 +13,12 @@ export default class UserController implements Controller {
     this.router.get(`${this.path}`, authMiddleware(), this.fetchAll);
   }
 
-  private fetchAll = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  private fetchAll = async (req: any, res: any, next: any) => {
     const users = await this.user.find();
     res.send(users);
   }
 
-  private create = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
+  private create = async (req: any, res: any, next: any) => {
     const userData: CreateUserDto = req.body;
     const newUser = new this.user(userData);
     const createdUser = await newUser.save();

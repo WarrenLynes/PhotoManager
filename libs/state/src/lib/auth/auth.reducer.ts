@@ -5,7 +5,7 @@ import {
   reset,
   logout,
   logoutSuccess,
-  logoutFailure, authenticate
+  logoutFailure
 } from './auth.actions';
 import { AppState } from '@starter/state';
 

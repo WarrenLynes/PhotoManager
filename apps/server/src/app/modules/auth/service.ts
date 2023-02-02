@@ -29,7 +29,7 @@ export default class AuthenticationService {
     if (await this.user.findOne({ email: userData.email })) {
       throw new UserWithThatEmailAlreadyExistsException(userData.email);
     }
-    const hashedPassword = await hash(userData.password, 10);0
+    const hashedPassword = await hash(userData.password, 10);
     const user = await this.user.create({ ...userData, password: hashedPassword });
     user.password = undefined;
     const tokenData = await this.createToken(user);
